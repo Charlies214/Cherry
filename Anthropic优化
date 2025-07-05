@@ -1,0 +1,303 @@
+/*
+========================
+青瓷·赤霞 (Qing-ci·Chi-xia)
+========================
+主题灵感来源于中国古典青瓷与Anthropic简约优雅的设计美学相结合。
+保留青瓷的清雅本色，融入Anthropic的现代简约设计语言。
+*/
+
+/*
+========================
+自定义字体配置说明
+========================
+要使用或更换自定义字体：
+
+1.  **确保 `@font-face` 定义正确**:
+    *   下面的 `@font-face` 规则定义了默认字体 'ClearHanSerifCustom'。
+    *   如果您想使用 **不同的自定义字体**：
+        a.  在下面或另起炉灶添加一个新的 `@font-face` 规则，为您的新字体指定一个 `font-family` 名称 (例如, 'MyNewFont') 和正确的 `src: url('file:///path/to/your/font.ttf')`。
+            路径中的空格需要转义为 %20。
+        b.  修改 `:root` 中的 `--font-main-custom-name` 变量的值，使其等于您在新 `@font-face` 中定义的 `font-family` 名称 (例如, `--font-main-custom-name: 'MyNewFont';`)。
+
+2.  **原字体 'ClearHanSerifCustom' 保持可用**:
+    *   只要下面的 `@font-face` 规则不变，并且 `--font-main-custom-name` 的值是 'ClearHanSerifCustom' (默认值)，原字体就会被使用。
+*/
+
+/* 默认自定义字体加载 - 用户可修改此部分或添加新的 @font-face 规则 */
+@font-face {
+    font-family: 'ClearHanSerifCustom'; /* 关键：这里必须是直接的字体名称字符串 */
+    /* 重要: 请确保路径正确，路径中的空格已转为 %20 */
+    src: url('file:///D:/Software/Cherry%20Studio%20fonts/ClearHanSerif-Regular.ttf') format('truetype'); /* 关键：这里必须是直接的路径字符串 */
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+    /* unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD, U+4E00-9FFF; */
+}
+
+/* 如果用户想添加另一个自定义字体，可以像这样添加：
+@font-face {
+    font-family: 'AnotherCustomFont';
+    src: url('file:///path/to/another/font.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+然后修改下面的 --font-main-custom-name: 'AnotherCustomFont';
+*/
+
+
+/* Root variables - 基础变量 */
+:root {
+    /* --- 主要自定义字体名称变量 --- */
+    /* 此变量的值应与 @font-face 中定义的某个 font-family 名称匹配 */
+    --font-main-custom-name: 'ClearHanSerifCustom'; /* 默认使用原字体 */
+
+    /* --- 系统备用字体 --- */
+    --system-sans-serif: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+    --system-serif: "SF Pro Text", "PingFang SC", "Songti SC", "STSong", serif;
+
+    /* --- 主要字体栈 --- */
+    /* 全局文本将优先使用 --font-main-custom-name 定义的字体，然后是系统无衬线字体 */
+    --font-family-main: var(--font-main-custom-name), var(--system-sans-serif);
+
+    /* 等宽字体 */
+    --monospace: Consolas, "SF Mono", SFMono-Regular, Menlo, Monaco, "Liberation Mono", "Courier New", monospace;
+
+    /* 旧的 --sans-serif 和 --serif 变量，现在也基于主要自定义字体和系统备用 */
+    --sans-serif: var(--font-main-custom-name), var(--system-sans-serif);
+    --serif: var(--font-main-custom-name), var(--system-serif);
+
+
+    /* 基础色调 */
+    --color-white-soft: #F4F8F6;
+    --color-black-soft: #2C3635;
+
+    /* Primary color */
+    --color-primary: #7BA898;
+    --color-primary-soft: rgba(123, 168, 152, 0.6);
+    --color-primary-mute: rgba(123, 168, 152, 0.2);
+
+    /* Anthropic暖色调 */
+    --book-cloth: #cc785c;
+    --kraft: #d4a27f;
+    --manilla: #ebdbbc;
+
+    /* Anthropic色系 */
+    --anthropic-bg: #F0EEE7;
+    --anthropic-bg-soft: #E6E4DD;
+    --anthropic-bg-mute: #DCDAD3;
+
+    /* 功能色 */
+    --black: #000000;
+    --white: #ffffff;
+    --focus: #75a9f280;
+    --link: #75a9f2;
+    --error: #ef4d43;
+
+    /* 其他 */
+    --list-item-border-radius: 0.5rem;
+}
+
+/* Dark mode */
+body[theme-mode="dark"] {
+    --color-background: #2C3635;
+    --color-background-mute: #445352;
+    --color-background-soft: #4A5755;
+    --navbar-background-mac: rgba(44, 54, 53, 0.85);
+    --navbar-background: #2C3635;
+    --chat-background: #2C3635;
+    --chat-background-user: #3A4745;
+    --chat-background-assistant: #445352;
+    --chat-text-user: #E6EFEC;
+    --color-text: #E6EFEC;
+    --color-hover: #506462;
+    --color-active: #5B706E;
+    --color-border: rgba(230, 239, 236, 0.15);
+    --color-border-soft: rgba(230, 239, 236, 0.08);
+    --input-background: #3A4745;
+    --input-container-background: #445352;
+    --input-shadow: rgba(0, 0, 0, 0.3);
+    --color-code-background: #3A4745;
+    --color-code-text: #E6EFEC;
+}
+
+/* Light mode */
+body[theme-mode="light"] {
+    --color-primary: #7BA898;
+    --color-primary-soft: rgba(123, 168, 152, 0.6);
+    --color-primary-mute: rgba(123, 168, 152, 0.2);
+    --color-background: var(--anthropic-bg);
+    --color-background-mute: var(--anthropic-bg-mute);
+    --color-background-soft: var(--anthropic-bg-soft);
+    --navbar-background: var(--anthropic-bg-soft);
+    --navbar-background-mac: rgba(240, 238, 231, 0.85);
+    --chat-background: var(--anthropic-bg);
+    --chat-background-user: var(--anthropic-bg-soft);
+    --chat-background-assistant: var(--anthropic-bg);
+    --color-text: #191919;
+    --chat-text-user: #191919;
+    --color-hover: #E6E4DD;
+    --color-active: #DCDAD3;
+    --color-border: rgba(25, 25, 25, 0.15);
+    --color-border-soft: rgba(25, 25, 25, 0.08);
+    --color-white: #F5F5F2;
+    --color-icon: var(--color-black-soft);
+    --color-icon-white: #91918d;
+    --color-error: var(--error);
+    --color-link: var(--link);
+    --color-code-background: #E6E4DD;
+    --color-code-text: #191919;
+    --color-frame-border: #91918d;
+    --color-group-background: var(--anthropic-bg-soft);
+    --color-reference: #91918d;
+    --color-reference-text: #191919;
+    --color-reference-background: var(--anthropic-bg);
+    --input-background: var(--anthropic-bg);
+    --input-container-background: #F5F5F2;
+    --input-shadow: rgba(0, 0, 0, 0.05);
+}
+
+/* 全局字体应用 */
+*:not(.iconfont),
+*:not(.iconfont)::before,
+*:not(.iconfont)::after {
+    font-family: var(--font-family-main) !important; /* 使用变量来应用字体 */
+    font-variant-ligatures: normal;
+}
+
+#content-container {
+    background-color: var(--color-background) !important;
+}
+
+.markdown {
+    p {
+        line-height: 1.65em;
+        font-weight: 400;
+    }
+    h1,
+    h2 {
+        font-weight: 500;
+        padding: 0.5rem 0;
+    }
+    h3,
+    h4 {
+        font-weight: 500;
+        padding: 0.5rem 0;
+    }
+    a {
+        text-underline-offset: 0.1em;
+        text-decoration-color: var(--color-primary-soft);
+        text-decoration-thickness: 0.1em;
+        text-decoration-style: dashed;
+    }
+    a:hover {
+        text-decoration-style: solid;
+    }
+    table,
+    th,
+    td,
+    blockquote {
+        font-size: small;
+    }
+}
+
+code,
+pre,
+kbd,
+samp,
+tt {
+    font-family: var(--monospace) !important;
+    font-size: 1em !important;
+}
+
+:not(pre) > code {
+    background-color: var(--color-code-background) !important;
+    color: var(--color-code-text) !important;
+    padding: 0.2em 0.4em !important;
+    border-radius: 3px !important;
+    white-space: nowrap !important;
+    font-weight: 500 !important;
+    margin: 0 0.2em !important;
+}
+
+.inputbar-container {
+    background-color: var(--input-container-background) !important;
+}
+
+::selection {
+    background-color: var(--color-primary-soft);
+    color: var(--color-text);
+}
+
+.bubble .message-content-container {
+    border-radius: 1rem;
+    border: 0.7pt solid var(--color-border-soft);
+}
+
+.inputbar {
+    background-color: var(--color-background) !important;
+    textarea {
+        font-size: 1rem;
+    }
+    .inputbar-container {
+        background-color: var(--input-container-background) !important;
+        filter: drop-shadow(0 0 1.25rem var(--input-shadow));
+        transition: all 0.3s ease-in-out;
+    }
+    .inputbar-container.focus {
+        filter: drop-shadow(0 0 1.25rem var(--input-shadow));
+    }
+}
+
+.bubble .message-user .message-action-button:hover {
+    background-color: var(--color-background-mute);
+}
+
+.ant-btn,
+.ant-input-outlined {
+    &:focus {
+        box-shadow: 0 0 0 2pt var(--focus);
+        border-color: var(--color-border-mute) !important;
+    }
+    &:hover {
+        border-color: var(--color-border-soft) !important;
+    }
+}
+
+.footnotes {
+    background-color: var(--color-background-soft);
+}
+
+.ant-dropdown-menu {
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--color-border);
+}
+
+.ant-segmented-group * {
+    border-radius: 0.5rem !important;
+}
+
+.ant-dropdown-trigger {
+    --color-border: transparent !important;
+    transition: all 0.3s ease-in-out !important;
+}
+
+* {
+    --ant-color-primary-hover: var(--color-primary) !important;
+    --ant-color-primary: var(--color-primary) !important;
+}
+
+/* ========================================= */
+/*    交互状态颜色修复 (悬停 & 选中)       */
+/* ========================================= */
+
+body[theme-mode="dark"] {
+    --color-list-item: var(--color-background-soft) !important;
+    --color-list-item-hover: var(--color-background-soft) !important;
+}
+
+body[theme-mode="light"] {
+    --color-list-item: var(--color-background-soft) !important;
+    --color-list-item-hover: var(--color-background-soft) !important;
+}
