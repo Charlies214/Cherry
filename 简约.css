@@ -1,0 +1,1372 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap"); @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap"); @import url("http://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css");
+:root {
+–duration-quick: 0.15s;
+–duration-normal: 0.3s;
+–easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
+
+/* 边框与角效果 - 修改为传统国风风格 */
+–chinese-border-radius: 4px;
+–chinese-line-width: 1px;
+–chinese-corner-size: 8px;
+
+/* 默认颜色（将被主题模式覆盖） /
+/ 中国传统色彩方案 /
+–color-chinese-primary: #A62E21; / 传统中国红 /
+–color-chinese-secondary: #C99A58; / 金/铜色 /
+–color-chinese-accent: #394867; / 青花瓷蓝 /
+–color-chinese-light: #F2E6D8; / 宣纸色 */
+
+–color-chinese-primary-rgb: 166, 46, 33;
+–color-chinese-secondary-rgb: 201, 154, 88;
+–color-chinese-accent-rgb: 57, 72, 103;
+
+–color-chinese-line: rgba(var(–color-chinese-primary-rgb), 0.7);
+–color-chinese-line-dim: rgba(var(–color-chinese-primary-rgb), 0.3);
+
+–shadow-chinese-glow: rgba(var(–color-chinese-primary-rgb), 0.15);
+–shadow-chinese-gold: rgba(var(–color-chinese-secondary-rgb), 0.1);
+
+–color-background: transparent;
+–color-background-soft: rgba(22, 27, 34, 0.8);
+–color-background-mute: rgba(33, 38, 45, 0.8);
+–navbar-background: transparent;
+–chat-background: transparent;
+–chat-background-user: rgba(22, 27, 34, 0.65);
+–chat-background-assistant: rgba(22, 27, 34, 0.65);
+–chat-customize-box-shadow: 0 0 0 1px rgba(48, 54, 61, 0.185);
+–chat-customize-box-shadow2: none;
+–chat-customize-box-shadow3: inset 0 0 0 1px rgba(48, 54, 61, 0.226);
+–chat-customize-box-shadow4: inset 0 0 0 1px rgba(139, 148, 158, 0.8);
+–chat-text-user: #c5def4;
+–color-text-1: #c3e0f9;
+–color-text-2: #8a9aaf;
+–chat-customize-collapse-background: rgba(22, 27, 34, 0.7);
+–chat-customize-codeHeader: #7d8590;
+–color-black: #161b22;
+–color-white: #f9e9e9;
+–antd-arrow-background-color: rgba(33, 38, 45, 0.7);
+–list-item-border-radius: 4px;
+–color-background-opacity: rgba(22, 27, 34, 0.6);
+–color-background-rgb: 22, 27, 34;
+–color-black-rgb: 16, 27, 34;
+–color-white-rgb: 249, 233, 233;
+}
+
+body {
+font-family: “Noto Serif SC”, “LXGW WenKai Screen”, serif !important;
+letter-spacing: 0.03em;
+line-height: 1.6;
+}
+
+/* UI元素字体 /
+.ant-modal-content,
+.ant-popover-inner,
+div[class^=“InputContainer-”],
+div[class^=“OutputContainer-”],
+div[class^=“HistoryContainner-”],
+.ant-notification-notice,
+.ant-message-notice-content,
+.ant-drawer-content,
+.ant-collapse-content-box,
+.ant-modal-body .ant-input-affix-wrapper input,
+.ant-segmented-group .ant-segmented-item-label,
+.ant-btn,
+.ant-dropdown-trigger,
+.ant-modal-header .ant-modal-title,
+.ant-collapse-header,
+li[class^=“MenuItem-”],
+#content-container [class^=“ListItemContainer-”],
+div[class^=“SettingGroup-”] label,
+.ant-tooltip-inner,
+.markdown th,
+.ant-table-thead > tr > th,
+.markdown pre [class^=“CodeHeader-”] {
+font-family: “Noto Serif SC”, “LXGW WenKai Screen”, serif !important;
+font-weight: 400 !important; / 更细的字体，更优雅 */
+letter-spacing: inherit;
+line-height: inherit;
+}
+
+/* Markdown 标题字体 */
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+font-family: “Noto Serif SC”, “LXGW WenKai Screen”, serif !important;
+font-weight: 700 !important;
+letter-spacing: 0.05em;
+}
+
+/* 特定阅读区域字体 */
+.bubble .message-content-container,
+.inputbar-container textarea,
+.ant-modal .ant-modal-body,
+.ant-table-tbody > tr > td,
+.markdown blockquote,
+.markdown table,
+.markdown p,
+.markdown li,
+.markdown strong,
+.markdown b,
+.markdown em,
+.markdown i {
+font-family: “LXGW WenKai Screen”, “Noto Serif SC”, serif !important;
+letter-spacing: 0.03em !important;
+line-height: 1.6 !important;
+}
+
+/* 代码字体 */
+code,
+pre,
+.markdown pre [class^=“CodeContent-”] * {
+font-family: monospace !important;
+font-weight: 400 !important;
+letter-spacing: normal !important;
+line-height: 1.45 !important;
+}
+
+/* — 暗色模式 — /
+body[theme-mode=“dark”] {
+/ 中国传统色彩方案 - 暗色模式 /
+–color-chinese-primary: #C1272D; / 更鲜艳的中国红 /
+–color-chinese-secondary: #F0C75E; / 更亮的金色 /
+–color-chinese-accent: #213042; / 保持深藏青色 */
+
+–color-chinese-primary-rgb: 193, 39, 45;
+–color-chinese-secondary-rgb: 240, 199, 94;
+–color-chinese-accent-rgb: 33, 48, 66;
+
+–color-chinese-line: rgba(var(–color-chinese-primary-rgb), 0.7);
+–color-chinese-line-dim: rgba(var(–color-chinese-primary-rgb), 0.3);
+
+–shadow-chinese-glow: rgba(var(–color-chinese-primary-rgb), 0.15);
+–shadow-chinese-gold: rgba(var(–color-chinese-secondary-rgb), 0.1);
+
+/* 背景颜色 */
+–color-background: transparent;
+–color-background-soft: rgba(18, 18, 18, 0.8);
+–color-background-mute: rgba(28, 28, 28, 0.8);
+–navbar-background: transparent;
+–chat-background: transparent;
+–chat-background-user: rgba(18, 18, 18, 0.65);
+–chat-background-assistant: rgba(18, 18, 18, 0.65);
+–chat-customize-collapse-background: rgba(18, 18, 18, 0.7);
+–color-background-opacity: rgba(18, 18, 18, 0.6);
+–color-background-rgb: 18, 18, 18;
+–antd-arrow-background-color: rgba(28, 28, 28, 0.7);
+
+/* 文本颜色 /
+–chat-text-user: #FFFFFF; / 纯白色文本 /
+–color-text-1: #FFFFFF; / 纯白色文本 /
+–color-text-2: #E6D2B5; / 浅金色次要文本 */
+–chat-customize-codeHeader: #F0C75E;
+–color-black: #121212;
+–color-white: #FFFFFF;
+
+/* 阴影颜色 */
+–chat-customize-box-shadow: 0 0 0 1px rgba(48, 54, 61, 0.185);
+–chat-customize-box-shadow2: none;
+–chat-customize-box-shadow3: inset 0 0 0 1px rgba(48, 54, 61, 0.226);
+–chat-customize-box-shadow4: inset 0 0 0 1px rgba(139, 148, 158, 0.8);
+
+/* 其他变量 */
+–list-item-border-radius: 4px;
+–color-black-rgb: 18, 18, 18;
+–color-white-rgb: 255, 255, 255;
+
+/* 背景图片 - 保持不变 */
+background-image: url(‘https://haowallpaper.com/link/common/file/previewFileImg/16664018664017280’);
+background-size: cover;
+background-position: center center;
+background-repeat: no-repeat;
+background-attachment: fixed;
+}
+
+/* — 亮色模式 — /
+body[theme-mode=“light”] {
+/ 中国传统色彩方案 - 亮色模式 /
+–color-chinese-primary: #B0273A; / 明亮的中国红 /
+–color-chinese-secondary: #D4A017; / 更深的金色 /
+–color-chinese-accent: #3A5883; / 更深的蓝色 */
+
+–color-chinese-primary-rgb: 176, 39, 58;
+–color-chinese-secondary-rgb: 212, 160, 23;
+–color-chinese-accent-rgb: 58, 88, 131;
+
+–color-chinese-line: rgba(var(–color-chinese-primary-rgb), 0.7);
+–color-chinese-line-dim: rgba(var(–color-chinese-primary-rgb), 0.3);
+
+–shadow-chinese-glow: rgba(var(–color-chinese-primary-rgb), 0.15);
+–shadow-chinese-gold: rgba(var(–color-chinese-secondary-rgb), 0.1);
+
+/* 背景颜色 */
+–color-background: transparent;
+–color-background-soft: rgba(246, 242, 235, 0.8);
+–color-background-mute: rgba(240, 236, 225, 0.8);
+–navbar-background: transparent;
+–chat-background: transparent;
+–chat-background-user: rgba(246, 242, 235, 0.65);
+–chat-background-assistant: rgba(246, 242, 235, 0.65);
+–chat-customize-collapse-background: rgba(246, 242, 235, 0.7);
+–color-background-opacity: rgba(246, 242, 235, 0.6);
+–color-background-rgb: 246, 242, 235;
+–antd-arrow-background-color: rgba(240, 236, 225, 0.7);
+
+/* 文本颜色 */
+–chat-text-user: #2C2C2C;
+–color-text-1: #2C2C2C;
+–color-text-2: #594A2D;
+–chat-customize-codeHeader: #594A2D;
+–color-white: #ffffff;
+–color-black: #2C2C2C;
+
+/* 阴影颜色 */
+–chat-customize-box-shadow: 0 1px 3px rgba(27, 31, 35, 0.031);
+–chat-customize-box-shadow2: none;
+–chat-customize-box-shadow3: inset 0 1px 1px rgba(27, 31, 35, 0.048), 0 0 0 1px rgba(208, 215, 222, 0.8);
+–chat-customize-box-shadow4: inset 0 1px 1px rgba(27, 31, 35, 0.1), 0 0 0 1px rgba(208, 215, 222, 0.8);
+
+/* 其他变量 */
+–list-item-border-radius: 4px;
+–color-black-rgb: 44, 44, 44;
+–color-white-rgb: 255, 255, 255;
+
+/* 背景图片 - 已更新为新URL */
+background-image: url(‘https://haowallpaper.com/link/common/file/previewFileImg/16728359680265600’);
+background-size: cover;
+background-position: center center;
+background-repeat: no-repeat;
+background-attachment: fixed;
+}
+
+/* == 组件样式 == */
+
+/* 侧边栏背景增强 - MODIFIED /
+#app-sidebar,
+.home-sidebar,
+[class^=“SideBar-”] {
+/ background-color: rgba(18, 18, 18, 0.85) !important; /* 旧：更暗的半透明背景 /
+background-color: var(–color-background-soft) !important; / 新：使用主题的柔和背景色 /
+/ border-right: 1px solid var(–color-chinese-primary) !important; /* 旧：红色边框 /
+border-right: 1px solid var(–color-chinese-secondary) !important; / 新：金色边框以匹配图标 /
+backdrop-filter: blur(20px) !important; / 增强模糊效果 */
+-webkit-backdrop-filter: blur(20px) !important;
+}
+
+/* 侧边栏项目悬停效果增强 */
+#app-sidebar [class^=“Icon-”]:hover,
+.home-sidebar .ant-dropdown-trigger:hover {
+background-color: rgba(var(–color-chinese-primary-rgb), 0.2) !important;
+box-shadow: 0 0 8px rgba(var(–color-chinese-primary-rgb), 0.3) !important;
+transform: translateY(-1px);
+}
+
+/* 侧边栏项目激活状态增强 */
+#app-sidebar [class^=“Icon-”].active {
+background-color: rgba(var(–color-chinese-primary-rgb), 0.25) !important;
+box-shadow: 0 0 12px rgba(var(–color-chinese-primary-rgb), 0.4) !important;
+color: var(–color-chinese-secondary) !important;
+}
+
+/* 侧边栏项目增强 /
+#app-sidebar [class^=“Icon-”],
+.home-sidebar .anticon,
+.home-sidebar .iconfont {
+color: var(–color-chinese-secondary) !important; / 使用金色调提高可见度 */
+font-size: 22px !important;
+text-shadow: 0 0 5px rgba(var(–color-chinese-secondary-rgb), 0.3);
+transition: all 0.3s ease;
+}
+
+/* 侧边栏顶部装饰 */
+#app-sidebar::before,
+.home-sidebar::before {
+content: “”;
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+height: 2px;
+background: linear-gradient(90deg, var(–color-chinese-primary), var(–color-chinese-secondary), var(–color-chinese-primary));
+opacity: 0.8;
+z-index: 10;
+}
+
+/* 侧边栏底部装饰 /
+#app-sidebar::after,
+.home-sidebar::after {
+content: “”;
+position: absolute;
+bottom: 0;
+left: 0;
+width: 100%;
+height: 80px;
+background-image: url(‘data:image/svg+xml;utf8,’);
+background-size: cover;
+background-position: bottom center;
+pointer-events: none;
+z-index: -1; / 修改为-1，避免遮挡内容 */
+}
+
+/* 输入栏 /
+.inputbar-container {
+border-radius: var(–list-item-border-radius) !important;
+border: transparent;
+background-color: transparent !important;
+box-shadow: var(–chat-customize-box-shadow);
+backdrop-filter: blur(15px);
+-webkit-backdrop-filter: blur(15px);
+will-change: backdrop-filter;
+position: relative;
+overflow: hidden;
+/ 替换赛博朋克尖角为更微妙的国风边框 */
+border-radius: var(–chinese-border-radius);
+background-image: linear-gradient(var(–color-background-opacity), var(–color-background-opacity));
+}
+
+.inputbar-container::before {
+content: “”;
+position: absolute;
+inset: 0;
+border: var(–chinese-line-width) solid var(–color-chinese-line-dim);
+border-radius: var(–chinese-border-radius);
+pointer-events: none;
+}
+
+.inputbar-container::after {
+content: “”;
+position: absolute;
+width: var(–chinese-corner-size);
+height: var(–chinese-corner-size);
+top: 0;
+right: 0;
+border-top: var(–chinese-line-width) solid var(–color-chinese-primary);
+border-right: var(–chinese-line-width) solid var(–color-chinese-primary);
+z-index: 1;
+pointer-events: none;
+}
+
+.inputbar-container textarea {
+resize: none;
+color: var(–color-text-1) !important;
+background-color: transparent !important;
+}
+
+.inputbar-container textarea:focus {
+border: none !important;
+box-shadow: none !important;
+}
+
+.inputbar-container .ant-btn {
+color: var(–color-text-1) !important;
+background-color: var(–color-background-soft) !important;
+border-color: var(–color-chinese-line-dim) !important;
+box-shadow: none !important;
+position: relative;
+overflow: hidden;
+border-radius: var(–chinese-border-radius);
+border-width: var(–chinese-line-width) !important;
+}
+
+.inputbar-container .ant-btn::after {
+content: “”;
+position: absolute;
+bottom: 0;
+right: 0;
+width: 6px;
+height: 6px;
+border-bottom: 1px solid var(–color-chinese-primary);
+border-right: 1px solid var(–color-chinese-primary);
+}
+
+.inputbar-container .ant-btn:hover {
+background-color: var(–color-background-mute) !important;
+}
+
+.inputbar-container .ant-btn .anticon,
+.inputbar-container .ant-btn .iconfont {
+color: var(–color-text-1) !important;
+}
+
+/* 下拉触发器 */
+.ant-dropdown-trigger {
+background-color: transparent !important;
+border: transparent !important;
+box-shadow: none;
+position: relative;
+transition: all 0.3s ease;
+color: var(–color-text-2);
+}
+
+.ant-dropdown-trigger:hover:not(.active) {
+color: var(–color-chinese-primary) !important;
+transition: color 0.3s ease;
+}
+
+.ant-dropdown-trigger.active {
+color: var(–color-chinese-secondary) !important;
+}
+
+.ant-dropdown-trigger.active:after {
+content: ‘’;
+position: absolute;
+height: 2px;
+width: 100%;
+background: var(–color-chinese-primary);
+box-shadow: none;
+transition: 400ms ease all;
+pointer-events: none;
+left: 0;
+bottom: 0;
+will-change: width;
+}
+
+.ant-dropdown-trigger:not(.active):after {
+content: ‘’;
+position: absolute;
+height: 2px;
+width: 0;
+background: var(–color-chinese-primary);
+box-shadow: none;
+transition: 400ms ease all;
+pointer-events: none;
+left: 0;
+bottom: 0;
+will-change: width;
+}
+
+.ant-dropdown-trigger:hover:not(.active):after {
+width: 100%;
+transition: 800ms ease all;
+will-change: width;
+}
+
+.active .menu {
+background-color: transparent !important;
+border-radius: var(–list-item-border-radius);
+}
+
+.active .menu:hover {
+color: var(–color-chinese-primary) !important;
+}
+
+/* 消息气泡容器 */
+.bubble .message-content-container {
+border-radius: var(–chinese-border-radius) !important;
+box-shadow: var(–chat-customize-box-shadow);
+background-color: var(–chat-background-assistant) !important;
+backdrop-filter: blur(15px);
+-webkit-backdrop-filter: blur(15px);
+will-change: backdrop-filter;
+position: relative;
+overflow: hidden;
+}
+
+.bubble .message-content-container::before {
+content: ‘’;
+position: absolute;
+inset: 0;
+border: var(–chinese-line-width) solid var(–color-chinese-line-dim);
+border-radius: var(–chinese-border-radius);
+pointer-events: none;
+}
+
+.bubble .message-content-container::after {
+content: ‘’;
+position: absolute;
+bottom: 0;
+right: 0;
+width: 20%;
+height: 1px;
+background: linear-gradient(90deg, transparent, var(–color-chinese-primary));
+opacity: 0.8;
+z-index: 2;
+}
+
+/* 通用模糊背景容器 /
+.ant-popover-inner,
+div[class^=“InputContainer-”],
+div[class^=“OutputContainer-”],
+div[class^=“HistoryContainner-”],
+.ant-notification-notice,
+.ant-message-notice-content,
+.ant-drawer-content,
+.ant-modal .ant-modal-content,
+div[class^=“AgentCardContainer-”],
+.ant-modal-confirm-content div[class^=“AgentPrompt-”],
+div[class^=“CardInfo-”] {
+border-radius: var(–chinese-border-radius) !important;
+background: var(–color-background-opacity) !important;
+box-shadow: var(–chat-customize-box-shadow) !important;
+backdrop-filter: blur(8px);
+-webkit-backdrop-filter: blur(8px);
+will-change: unset; / Changed from ‘unset’ - might need ‘transform, opacity’ depending on element */
+border: var(–chinese-line-width) solid var(–color-chinese-line-dim);
+overflow: hidden;
+position: relative;
+}
+
+/* 模态框特定样式 /
+.ant-modal .ant-modal-content {
+border: 1px solid var(–color-chinese-primary);
+color: var(–color-text-1);
+will-change: transform, opacity; / Ensure this is set for modals */
+}
+
+.ant-modal .ant-modal-content::before,
+.ant-modal .ant-modal-content::after {
+display: none; /* These might conflict with the main container styling */
+}
+
+/* 模态框头部 - MODIFIED /
+.ant-modal-header {
+/ background-color: transparent !important; /* 旧: 透明背景 /
+background-color: var(–color-background-soft) !important; / 新: 使用柔和背景色以提高对比度 */
+border-bottom: 1px solid var(–color-chinese-primary);
+border-radius: var(–chinese-border-radius) var(–chinese-border-radius) 0 0 !important;
+padding: 16px 24px;
+color: var(–color-text-1) !important;
+position: relative;
+}
+
+.ant-modal-title {
+color: var(–color-text-1) !important; /* Ensure title text color is set */
+}
+
+.ant-modal-header::after {
+content: “”;
+position: absolute;
+bottom: -1px; /* Position over the border */
+right: 0;
+width: 25%;
+height: 1px;
+background: linear-gradient(90deg, transparent, var(–color-chinese-primary));
+}
+
+/* 代理/卡片信息特定背景 */
+.ant-modal-confirm-content div[class^=“AgentPrompt-”],
+div[class^=“CardInfo-”] {
+box-shadow: var(–chat-customize-box-shadow3) !important;
+background: var(–chat-customize-collapse-background) !important;
+color: var(–color-text-1);
+}
+
+/* 菜单项/列表项/分段标签 */
+li[class^=“MenuItem-”],
+#content-container [class^=“ListItemContainer-”],
+.ant-segmented-group .ant-segmented-item-label {
+border: 0 !important;
+transition: all 0.2s ease;
+box-sizing: border-box;
+border-radius: var(–chinese-border-radius) !important;
+color: var(–color-text-2);
+position: relative;
+background-color: transparent !important;
+}
+
+li[class^=“MenuItem-”].active,
+#content-container [class^=“ListItemContainer-”].active,
+.ant-segmented-group .ant-segmented-item-label[aria-selected=“true”] {
+box-shadow: var(–chat-customize-box-shadow4) !important;
+background: var(–color-background-soft) !important;
+color: var(–color-text-1);
+backdrop-filter: blur(8px);
+-webkit-backdrop-filter: blur(8px);
+will-change: backdrop-filter;
+border-left: 2px solid var(–color-chinese-primary) !important;
+}
+
+li[class^=“MenuItem-”].active::after,
+#content-container [class^=“ListItemContainer-”].active::after {
+content: “”;
+position: absolute;
+right: 0;
+top: 5px;
+width: 5px;
+height: 5px;
+background-color: var(–color-chinese-primary);
+}
+
+li[class^=“MenuItem-”]:hover,
+#content-container [class^=“ListItemContainer-”]:hover,
+.ant-segmented-group .ant-segmented-item-label:hover {
+box-shadow: var(–chat-customize-box-shadow4) !important;
+background: var(–color-background-soft) !important;
+backdrop-filter: blur(8px);
+-webkit-backdrop-filter: blur(8px);
+will-change: backdrop-filter;
+color: var(–color-text-1);
+}
+
+/* 菜单项增强 */
+li[class^=“MenuItem-”],
+#content-container [class^=“ListItemContainer-”] {
+background-color: rgba(var(–color-background-rgb), 0.8) !important;
+border-left: 2px solid transparent;
+}
+
+/* 活跃菜单项增强 */
+li[class^=“MenuItem-”].active,
+#content-container [class^=“ListItemContainer-”].active {
+background-color: rgba(var(–color-chinese-primary-rgb), 0.15) !important;
+border-left: 2px solid var(–color-chinese-primary) !important;
+box-shadow: 0 0 10px rgba(var(–color-chinese-primary-rgb), 0.2) !important;
+}
+
+/* 侧边栏图标 /
+#app-sidebar [class^=“Icon-”].active,
+#app-sidebar [class^=“Icon-”]:hover {
+box-shadow: var(–chat-customize-box-shadow3) !important;
+background: transparent !important; / Keep background transparent for active/hover icons */
+transition: all 0.2s ease;
+border: none !important;
+color: var(–color-chinese-secondary) !important;
+position: relative;
+}
+
+#app-sidebar [class^=“Icon-”].active::before {
+content: “”;
+position: absolute;
+top: -2px;
+right: -2px;
+width: 6px;
+height: 6px;
+border-top: 2px solid var(–color-chinese-primary);
+border-right: 2px solid var(–color-chinese-primary);
+}
+
+#app-sidebar [class^=“Icon-”].active::after {
+content: “”;
+position: absolute;
+bottom: -2px;
+left: -2px;
+width: 6px;
+height: 6px;
+border-bottom: 2px solid var(–color-chinese-primary);
+border-left: 2px solid var(–color-chinese-primary);
+}
+
+/* 设置组/分段控件 */
+div[class^=“SettingGroup-”] .ant-segmented,
+div[class^=“SettingContainer-”] div[class^=“SettingGroup-”],
+.ant-segmented.ant-segmented-shape-round {
+border-radius: var(–chinese-border-radius) !important;
+background-color: var(–color-background-opacity) !important;
+box-shadow: var(–chat-customize-box-shadow) !important;
+backdrop-filter: blur(15px);
+-webkit-backdrop-filter: blur(15px);
+will-change: backdrop-filter;
+border: var(–chinese-line-width) solid var(–color-chinese-line-dim);
+}
+
+.ant-segmented-thumb,
+label.ant-segmented-item.ant-segmented-item-selected {
+background-color: transparent !important; /* Ensure thumb matches general style */
+border: transparent !important;
+}
+
+.ant-segmented-thumb-motion-appear-active {
+display: none !important; /* Hide default animation if needed */
+}
+
+/* 折叠面板 */
+.ant-collapse-item {
+border-radius: var(–chinese-border-radius) !important;
+box-shadow: var(–chat-customize-box-shadow) !important;
+overflow: hidden;
+background-color: transparent !important;
+margin-bottom: 1rem;
+border: var(–chinese-line-width) solid var(–color-chinese-line-dim);
+position: relative;
+}
+
+.ant-collapse-item::before {
+content: “”;
+position: absolute;
+top: 0;
+left: 0;
+width: 10px;
+height: 10px;
+border-top: 2px solid var(–color-chinese-primary);
+border-left: 2px solid var(–color-chinese-primary);
+z-index: 1;
+}
+
+.ant-collapse-header {
+background-color: var(–color-background-soft) !important;
+border-radius: 0 !important; /* Keep header sharp top corners /
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
+will-change: backdrop-filter;
+border-bottom: 1px solid rgba(var(–color-chinese-primary-rgb), 0.3);
+color: var(–color-text-1);
+position: relative;
+padding: 16px; / Consistent padding */
+}
+
+.ant-collapse-header::after {
+content: “”;
+position: absolute;
+top: 50%;
+right: 40px; /* Adjust position relative to arrow */
+width: 30px;
+height: 1px;
+background: linear-gradient(90deg, transparent, var(–color-chinese-primary));
+opacity: 0.6;
+}
+
+.ant-collapse-content {
+background-color: transparent !important;
+border-radius: 0 !important; /* Keep content sharp bottom corners */
+}
+
+.ant-collapse-content-box {
+/* background-color: rgba(var(–color-background-rgb), 0.1) !important; /* Slightly different background for content /
+background-color: var(–color-background-opacity) !important; / Use consistent opacity background */
+border-radius: 0 !important;
+padding: 16px;
+color: var(–color-text-1);
+}
+
+.ant-collapse,
+.ant-collapse-borderless {
+border: none !important;
+background: transparent !important;
+}
+
+/* 表单输入(在模态框内) /
+.ant-modal-body .ant-input-affix-wrapper {
+background-color: var(–color-background-mute) !important;
+box-shadow: var(–chat-customize-box-shadow4) !important;
+border: none;
+border-radius: var(–chinese-border-radius) !important;
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
+will-change: backdrop-filter;
+position: relative;
+overflow: hidden;
+border: var(–chinese-line-width) solid var(–color-chinese-line-dim); / Added border consistent with others */
+}
+
+.ant-modal-body .ant-input-affix-wrapper input {
+background: transparent !important;
+color: var(–color-text-1) !important;
+}
+
+.ant-modal-body .ant-input-affix-wrapper-focused {
+background-color: var(–color-background-mute) !important;
+box-shadow: var(–chat-customize-box-shadow4), 0 0 0 2px rgba(var(–color-chinese-primary-rgb), 0.3) !important;
+border: none; /* Keep border none on focus, shadow indicates focus */
+}
+
+.ant-modal-body .ant-input-affix-wrapper-focused::after {
+content: “”;
+position: absolute;
+bottom: 0;
+right: 0;
+width: 10px;
+height: 10px;
+border-bottom: 2px solid var(–color-chinese-primary);
+border-right: 2px solid var(–color-chinese-primary);
+z-index: 1;
+}
+
+div[class^=“SearchIcon-”] {
+background-color: transparent !important;
+color: var(–color-text-2);
+}
+
+/* Markdown 内容 */
+.markdown {
+color: var(–color-text-1);
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+color: var(–color-chinese-secondary); /* Default to gold for most headers */
+text-shadow: 0 0 3px var(–shadow-chinese-glow);
+letter-spacing: 0.05em;
+margin-bottom: 1em;
+margin-top: 1.5em;
+position: relative;
+}
+
+.markdown h1 {
+font-size: 2em;
+border-bottom: 2px solid var(–color-chinese-primary);
+padding-bottom: 0.3em;
+}
+
+.markdown h1::after {
+content: “”;
+position: absolute;
+right: 0;
+bottom: -2px; /* Position over the border */
+width: 30%;
+height: 2px;
+background: linear-gradient(90deg, transparent, var(–color-chinese-primary));
+}
+
+.markdown h2 {
+font-size: 1.5em;
+border-left: 4px solid var(–color-chinese-primary);
+padding-left: 1rem;
+}
+
+/* Markdown H3 - MODIFIED /
+.markdown h3 {
+font-size: 1.2em;
+/ color: var(–color-chinese-primary); /* 旧: 红色 /
+color: var(–color-chinese-accent); / 新: 使用 Accent 颜色提高对比度 /
+position: relative; / Keep for pseudo-element */
+}
+
+.markdown h3::before {
+content: "- ";
+margin-right: 0.5em;
+/* color: var(–color-chinese-line-dim); /* 旧: 暗红色 /
+color: rgba(var(–color-chinese-accent-rgb), 0.5); / 新: 暗 Accent 色 */
+opacity: 0.7;
+}
+
+.markdown blockquote {
+padding: 1rem 1.5rem;
+margin: 1.5rem 0; /* Increased margin */
+background-color: rgba(var(–color-chinese-accent-rgb), 0.1);
+font-style: italic;
+color: var(–color-text-2);
+position: relative;
+border: 1px solid var(–color-chinese-accent);
+border-left: 4px solid var(–color-chinese-accent);
+border-radius: var(–chinese-border-radius) !important;
+box-shadow: var(–chat-customize-box-shadow);
+overflow: hidden;
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+}
+
+.markdown blockquote::before {
+content: “”;
+position: absolute;
+top: 0;
+left: 0;
+width: 10px;
+height: 10px;
+border-top: 2px solid var(–color-chinese-accent);
+border-left: 2px solid var(–color-chinese-accent);
+z-index: 1;
+}
+
+.markdown blockquote::after {
+content: “”;
+position: absolute;
+bottom: 0;
+right: 0;
+width: 10px;
+height: 10px;
+border-bottom: 2px solid var(–color-chinese-accent);
+border-right: 2px solid var(–color-chinese-accent);
+z-index: 1;
+}
+
+/* Markdown 中的粗体文本样式 */
+.markdown strong, .markdown b {
+font-weight: bold !important;
+color: var(–color-text-1);
+background-color: rgba(var(–color-chinese-primary-rgb), 0.12);
+padding: 0.1em 0.4em;
+margin: 0 0.1em;
+border-radius: 4px;
+text-shadow: 0 0 3px rgba(var(–color-chinese-primary-rgb), 0.1);
+line-height: 1.5;
+box-decoration-break: clone;
+-webkit-box-decoration-break: clone;
+}
+
+/* Markdown 中的斜体文本样式 */
+.markdown em, .markdown i {
+font-style: italic;
+color: var(–color-text-2);
+background-color: rgba(var(–color-chinese-accent-rgb), 0.08);
+padding: 0.1em 0.4em;
+margin: 0 0.1em;
+border-radius: 4px;
+border: 1px solid rgba(var(–color-chinese-accent-rgb), 0.1);
+line-height: 1.5;
+box-decoration-break: clone;
+-webkit-box-decoration-break: clone;
+}
+
+/* Markdown 中的代码块样式 */
+.markdown pre .shiki {
+border: none !important;
+background-color: transparent !important;
+padding: 0 !important;
+margin: 0 !important;
+}
+
+.markdown pre {
+padding: 0 !important; /* Remove padding from pre itself /
+border-radius: var(–chinese-border-radius) !important;
+background: none !important;
+box-shadow: none !important;
+margin: 1.5rem 0;
+overflow: hidden; / Keep overflow hidden on pre */
+position: relative;
+}
+
+.markdown pre [class^=“CodeBlockWrapper-”] {
+border-radius: var(–chinese-border-radius) !important;
+box-shadow: var(–chat-customize-box-shadow) !important;
+overflow: hidden; /* Wrapper handles internal overflow */
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
+will-change: backdrop-filter;
+border: 1px solid var(–color-chinese-primary);
+position: relative;
+background-color: var(–color-background-opacity) !important;
+}
+
+.markdown pre [class^=“CodeBlockWrapper-”]::before {
+content: “”;
+position: absolute;
+top: 0;
+right: 0;
+width: 12px;
+height: 12px;
+border-top: 2px solid var(–color-chinese-primary);
+border-right: 2px solid var(–color-chinese-primary);
+z-index: 10; /* Ensure corners are above content */
+}
+
+.markdown pre [class^=“CodeBlockWrapper-”]::after {
+content: “”;
+position: absolute;
+bottom: 0;
+left: 0;
+width: 12px;
+height: 12px;
+border-bottom: 2px solid var(–color-chinese-primary);
+border-left: 2px solid var(–color-chinese-primary);
+z-index: 10; /* Ensure corners are above content */
+}
+
+.markdown pre [class^=“CodeHeader-”] {
+border-radius: 0 !important; /* Header part of the block /
+background: linear-gradient(to bottom, rgba(var(–color-white-rgb), 0.08), rgba(var(–color-white-rgb), 0)), rgba(var(–color-black-rgb), 0.9);
+border-bottom: 1px solid var(–color-chinese-primary);
+margin-bottom: 0 !important; / Remove margin /
+justify-content: center; / Center content if needed /
+color: var(–color-text-2);
+padding: 8px 16px;
+position: relative;
+overflow: hidden; / Hide overflow in header too /
+padding-left: 70px; / Make space for buttons + dots */
+}
+
+.markdown pre [class^=“CodeHeader-”]::before {
+content: ’ ';
+position: absolute;
+top: 12px; /* Adjust vertical position /
+left: 12px;
+width: 12px;
+height: 12px;
+border-radius: 50%;
+background: #fc625d; / Red /
+box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b; / Yellow, Green */
+z-index: 1;
+}
+
+.markdown pre [class^=“CodeContent-”] {
+background-color: transparent !important;
+border-radius: 0 !important;
+border-top: none !important;
+margin-top: 0 !important;
+padding: 16px; /* Padding for code content /
+overflow: auto; / Let content scroll */
+}
+
+.markdown ul li::marker,
+.markdown ol li::marker {
+color: var(–color-chinese-primary);
+}
+
+.markdown hr {
+border: none;
+height: 1px;
+background: linear-gradient(90deg, transparent, var(–color-chinese-primary), transparent);
+margin: 2rem 0;
+opacity: 0.5;
+position: relative;
+}
+
+.markdown hr::after {
+content: “”;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 6px;
+height: 6px;
+background-color: var(–color-chinese-primary);
+border-radius: 50%;
+box-shadow: 0 0 3px var(–shadow-chinese-glow);
+}
+
+.markdown table {
+width: 100%;
+border-collapse: separate; /* Use separate for border-radius /
+border-spacing: 0;
+margin: 1.5rem 0;
+background-color: var(–color-background-opacity) !important;
+border: 1px solid var(–color-chinese-primary);
+border-radius: var(–chinese-border-radius);
+overflow: hidden; / Clip content to rounded corners */
+box-shadow: var(–chat-customize-box-shadow);
+position: relative;
+}
+
+.markdown table::before {
+content: “”;
+position: absolute;
+top: 0;
+left: 0;
+width: 10px;
+height: 10px;
+border-top: 2px solid var(–color-chinese-primary);
+border-left: 2px solid var(–color-chinese-primary);
+z-index: 1;
+}
+
+.markdown table::after {
+content: “”;
+position: absolute;
+bottom: 0;
+right: 0;
+width: 10px;
+height: 10px;
+border-bottom: 2px solid var(–color-chinese-primary);
+border-right: 2px solid var(–color-chinese-primary);
+z-index: 1;
+}
+
+.markdown th {
+background-color: rgba(var(–color-chinese-primary-rgb), 0.15) !important;
+color: var(–color-text-1);
+padding: 0.75rem;
+border-bottom: 1px solid var(–color-chinese-primary) !important;
+border-left: 1px solid rgba(var(–color-chinese-primary-rgb), 0.3); /* Cell border /
+position: relative;
+text-align: left; / Explicitly set text alignment */
+}
+
+.markdown th:first-child {
+border-left: none; /* Remove left border on first header cell */
+}
+
+.markdown td {
+padding: 0.75rem;
+border-bottom: 1px solid rgba(var(–color-chinese-primary-rgb), 0.3) !important;
+border-left: 1px solid rgba(var(–color-chinese-primary-rgb), 0.3); /* Cell border */
+transition: all var(–duration-quick) var(–easing-standard);
+color: var(–color-text-1);
+}
+
+.markdown td:first-child {
+border-left: none; /* Remove left border on first data cell */
+}
+
+.markdown tr:last-child td {
+border-bottom: none !important; /* Remove bottom border on last row */
+}
+
+.markdown tr:hover td {
+background-color: var(–color-background-mute) !important;
+}
+
+/* 链接 */
+a {
+color: var(–color-chinese-primary) !important;
+transition: all 0.3s ease;
+text-decoration: none;
+text-shadow: 0 0 2px var(–shadow-chinese-glow);
+position: relative;
+}
+
+a:hover {
+color: var(–color-chinese-secondary) !important;
+text-shadow: 0 0 4px var(–shadow-chinese-glow);
+}
+
+a::after {
+content: “”;
+position: absolute;
+width: 0;
+height: 1px;
+bottom: -1px;
+left: 0;
+background-color: var(–color-chinese-secondary);
+transition: width var(–duration-normal) var(–easing-standard);
+}
+
+a:hover::after {
+width: 100%;
+}
+
+/* 滚动条 */
+::-webkit-scrollbar {
+width: 8px;
+height: 8px;
+}
+
+::-webkit-scrollbar-track {
+background: transparent; /* Keep track transparent */
+}
+
+::-webkit-scrollbar-thumb {
+background: var(–color-chinese-primary);
+border-radius: 4px;
+border: 1px solid var(–color-background-soft); /* Add border to thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+background: var(–color-chinese-secondary);
+}
+
+/* Code block scrollbar /
+pre::-webkit-scrollbar,
+.markdown pre [class^=“CodeContent-”]::-webkit-scrollbar { / Target code content div */
+width: 6px;
+height: 6px;
+}
+
+pre::-webkit-scrollbar-thumb,
+.markdown pre [class^=“CodeContent-”]::-webkit-scrollbar-thumb {
+background: var(–color-chinese-primary);
+border-radius: 3px;
+border: none;
+}
+
+pre::-webkit-scrollbar-thumb:hover,
+.markdown pre [class^=“CodeContent-”]::-webkit-scrollbar-thumb:hover {
+background: var(–color-chinese-secondary);
+}
+
+/* 表单控件 */
+.ant-switch-checked {
+background-color: var(–color-chinese-primary) !important;
+}
+
+.ant-checkbox-checked .ant-checkbox-inner,
+.ant-checkbox-indeterminate .ant-checkbox-inner {
+background-color: var(–color-chinese-primary) !important;
+border-color: var(–color-chinese-primary) !important;
+}
+
+.ant-checkbox-wrapper:hover .ant-checkbox-inner,
+.ant-checkbox:hover .ant-checkbox-inner,
+.ant-checkbox-input:focus + .ant-checkbox-inner {
+border-color: var(–color-chinese-primary) !important;
+}
+
+.ant-checkbox-checked::after {
+border-color: var(–color-chinese-primary) !important;
+}
+
+.ant-radio-checked .ant-radio-inner {
+border-color: var(–color-chinese-primary) !important;
+}
+
+.ant-radio-inner::after {
+background-color: var(–color-chinese-primary) !important;
+}
+
+.ant-radio-wrapper:hover .ant-radio,
+.ant-radio:hover .ant-radio-inner,
+.ant-radio-input:focus + .ant-radio-inner {
+border-color: var(–color-chinese-primary) !important;
+}
+
+/* Antd 表格 */
+.ant-table-wrapper {
+border: 1px solid var(–color-chinese-primary);
+border-radius: var(–chinese-border-radius);
+overflow: hidden;
+box-shadow: var(–chat-customize-box-shadow);
+background-color: var(–color-background-opacity) !important;
+position: relative;
+}
+
+.ant-table {
+background: transparent !important;
+border: none !important; /* Remove internal table border */
+}
+
+.ant-table-wrapper::before {
+content: “”;
+position: absolute;
+top: 0;
+left: 0;
+width: 10px;
+height: 10px;
+border-top: 2px solid var(–color-chinese-primary);
+border-left: 2px solid var(–color-chinese-primary);
+z-index: 2; /* Above table content */
+}
+
+.ant-table-wrapper::after {
+content: “”;
+position: absolute;
+bottom: 0;
+right: 0;
+width: 10px;
+height: 10px;
+border-bottom: 2px solid var(–color-chinese-primary);
+border-right: 2px solid var(–color-chinese-primary);
+z-index: 2; /* Above table content */
+}
+
+.ant-table-thead > tr > th {
+background-color: rgba(var(–color-chinese-primary-rgb), 0.15) !important;
+border-bottom: 1px solid var(–color-chinese-primary) !important;
+color: var(–color-text-1) !important;
+padding: 0.75rem;
+border-left: 1px solid rgba(var(–color-chinese-primary-rgb), 0.3); /* Cell border */
+}
+
+.ant-table-thead > tr > th:first-child {
+border-left: none; /* Remove left border on first header cell */
+}
+
+.ant-table-tbody > tr > td {
+border-bottom: 1px solid rgba(var(–color-chinese-primary-rgb), 0.3) !important;
+padding: 0.75rem;
+border-left: 1px solid rgba(var(–color-chinese-primary-rgb), 0.3); /* Cell border */
+transition: all var(–duration-quick) var(–easing-standard);
+color: var(–color-text-1);
+}
+
+.ant-table-tbody > tr > td:first-child {
+border-left: none; /* Remove left border on first data cell */
+}
+
+.ant-table-tbody > tr:last-child > td {
+border-bottom: none !important; /* Remove bottom border on last row */
+}
+
+.ant-table-tbody > tr.ant-table-row:hover > td {
+background: var(–color-background-mute) !important;
+}
+
+/* 选择高亮 */
+::selection {
+background-color: rgba(var(–color-chinese-primary-rgb), 0.4);
+color: var(–color-white);
+text-shadow: none;
+}
+
+body[theme-mode=“light”] ::selection {
+/* Ensure sufficient contrast in light mode /
+color: var(–color-black); / Use black text on red highlight */
+}
+
+/* 添加一些国风特色装饰 - 背景纹理 /
+body[theme-mode=“dark”]::after,
+body[theme-mode=“light”]::after {
+content: ‘’;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+pointer-events: none;
+/ 传统中国纹样替代网格 - Keep SVG pattern /
+background-image: url(‘data:image/svg+xml;utf8,’);
+background-size: 40px 40px;
+opacity: 0.15;
+z-index: -2; / Keep behind content */
+}
+
+/* 按钮 */
+.ant-btn:not(.ant-btn-link):not(.ant-btn-text) {
+position: relative;
+overflow: hidden;
+border: var(–chinese-line-width) solid var(–color-chinese-line-dim) !important;
+border-radius: var(–chinese-border-radius);
+background-color: var(–color-background-soft) !important;
+color: var(–color-text-1) !important;
+backdrop-filter: blur(5px);
+transition: all var(–duration-quick) var(–easing-standard);
+}
+
+.ant-btn:not(.ant-btn-link):not(.ant-btn-text)::after {
+content: “”;
+position: absolute;
+bottom: 0;
+right: 0;
+width: 6px;
+height: 6px;
+border-bottom: 1px solid var(–color-chinese-primary);
+border-right: 1px solid var(–color-chinese-primary);
+transition: all var(–duration-quick) var(–easing-standard);
+}
+
+.ant-btn:not(.ant-btn-link):not(.ant-btn-text):hover {
+background-color: var(–color-background-mute) !important;
+border-color: var(–color-chinese-primary) !important;
+}
+
+.ant-btn:not(.ant-btn-link):not(.ant-btn-text):hover::after {
+border-color: var(–color-chinese-secondary); /* Change corner color on hover */
+}
+
+.ant-btn-primary {
+border: 1px solid var(–color-chinese-primary) !important;
+background: linear-gradient(rgba(var(–color-chinese-primary-rgb), 0.2), rgba(var(–color-chinese-primary-rgb), 0.1)), var(–color-background-soft) !important;
+color: var(–color-chinese-secondary) !important; /* Primary button text is gold */
+box-shadow: 0 0 5px rgba(var(–color-chinese-primary-rgb), 0.2);
+}
+
+.ant-btn-primary::before {
+content: “”;
+position: absolute;
+top: 0;
+left: 0;
+width: 6px;
+height: 6px;
+border-top: 1px solid var(–color-chinese-primary);
+border-left: 1px solid var(–color-chinese-primary);
+transition: all var(–duration-quick) var(–easing-standard);
+}
+
+.ant-btn-primary:hover {
+background: linear-gradient(rgba(var(–color-chinese-primary-rgb), 0.3), rgba(var(–color-chinese-primary-rgb), 0.2)), var(–color-background-mute) !important;
+border-color: var(–color-chinese-secondary) !important; /* Hover border is gold */
+box-shadow: 0 0 8px rgba(var(–color-chinese-primary-rgb), 0.4);
+}
+
+.ant-btn-primary:hover::before,
+.ant-btn-primary:hover::after {
+border-color: var(–color-chinese-secondary); /* Change both corners to gold on hover */
+}
+
+/* 适配亮色模式的代码标题 /
+body[theme-mode=“light”] .markdown pre [class^=“CodeHeader-”] {
+/ Adjust light mode code header background and text for better contrast /
+background: linear-gradient(to bottom, rgba(var(–color-black-rgb), 0.04), rgba(var(–color-black-rgb), 0.01)), rgba(240, 242, 245, 0.9); / Lighter background /
+color: #364149; / Darker text color /
+border-bottom-color: rgba(var(–color-chinese-primary-rgb), 0.5); / Softer border */
+}
+
+body[theme-mode=“light”] .markdown pre [class^=“CodeHeader-”] .anticon,
+body[theme-mode=“light”] .markdown pre [class^=“CodeHeader-”] .iconfont {
+color: #57606a; /* Ensure icons are visible */
+}
+
+/* — End of Modifications — */
