@@ -1,0 +1,276 @@
+/* 
+========================
+青瓷·赤霞 (Qing-ci·Chi-xia)
+========================
+主题灵感来源于中国古典青瓷与Anthropic简约优雅的设计美学相结合。
+保留青瓷的清雅本色，融入Anthropic的现代简约设计语言。
+*/
+
+/* Root variables - 基础变量 */
+:root {
+    /* 基础色调 */
+    --color-white-soft: #F4F8F6;
+    --color-black-soft: #2C3635;  /* Deep celadon */
+
+    /* Primary color - classic celadon with Anthropic warmth */
+    --color-primary: #7BA898;     /* Traditional celadon green */
+    --color-primary-soft: rgba(123, 168, 152, 0.6);
+    --color-primary-mute: rgba(123, 168, 152, 0.2);
+    
+    /* 添加Anthropic暖色调 */
+    --book-cloth: #cc785c;  /* Anthropic暖色调 */
+    --kraft: #d4a27f;       /* Anthropic牛皮纸色 */
+    --manilla: #ebdbbc;     /* Anthropic马尼拉纸色 */
+    
+    /* Anthropic色系 */
+    --anthropic-bg: #F0EEE7;      /* Anthropic官方背景色 */
+    --anthropic-bg-soft: #E6E4DD; /* 深一点的Anthropic背景色 */
+    --anthropic-bg-mute: #DCDAD3; /* 更深一点的Anthropic背景色 */
+    
+    /* 功能色 */
+    --black: #000000;
+    --white: #ffffff;
+    --focus: #75a9f280;
+    --link: #75a9f2;
+    --error: #ef4d43;
+    
+    /* 字体 - 优先使用macOS系统字体 */
+    --sans-serif: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+    --serif: "SF Pro Text", "PingFang SC", "Songti SC", "STSong", serif;
+    --monospace: "SF Mono", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    
+    /* 其他 */
+    --list-item-border-radius: 0.5rem;
+}
+
+/* Dark mode - deep celadon tones */
+body[theme-mode="dark"] {
+    --color-background: #2C3635;       /* Deep celadon */
+    --color-background-mute: #445352;  /* Rich celadon */
+    --color-background-soft: #4A5755;  /* Medium celadon */
+
+    --navbar-background-mac: rgba(44, 54, 53, 0.85);
+    --navbar-background: #2C3635;
+    --chat-background: #2C3635;
+    --chat-background-user: #3A4745;
+    --chat-background-assistant: #445352;
+
+    --chat-text-user: #E6EFEC;
+    --color-text: #E6EFEC;
+
+    --color-hover: #506462;
+    --color-active: #5B706E;
+
+    --color-border: rgba(230, 239, 236, 0.15);
+    --color-border-soft: rgba(230, 239, 236, 0.08);
+    
+    /* 深色模式下的输入框样式 */
+    --input-background: #3A4745;
+    --input-container-background: #445352;
+    --input-shadow: rgba(0, 0, 0, 0.3);
+    
+    /* 深色模式下的代码样式 */
+    --color-code-background: #3A4745;
+    --color-code-text: #E6EFEC;
+}
+
+/* Light mode - Anthropic inspired style */
+body[theme-mode="light"] {
+    /* 保留原celadon主色调 */
+    --color-primary: #7BA898;     /* Traditional celadon green */
+    --color-primary-soft: rgba(123, 168, 152, 0.6);
+    --color-primary-mute: rgba(123, 168, 152, 0.2);
+
+    /* 背景色彩修改为Anthropic官方色调 */
+    --color-background: var(--anthropic-bg);      /* Anthropic官方背景色 */
+    --color-background-mute: var(--anthropic-bg-mute);
+    --color-background-soft: var(--anthropic-bg-soft);
+
+    /* 界面元素色彩 */
+    --navbar-background: var(--anthropic-bg-soft);
+    --navbar-background-mac: rgba(240, 238, 231, 0.85); /* 半透明Anthropic背景 */
+    --chat-background: var(--anthropic-bg);        /* Anthropic官方背景色 */
+    --chat-background-user: var(--anthropic-bg-soft);
+    --chat-background-assistant: var(--anthropic-bg);
+
+    /* 文本颜色 */
+    --color-text: #191919;  /* Anthropic的深灰色文字 */
+    --chat-text-user: #191919;
+    
+    /* 交互色彩 */
+    --color-hover: #E6E4DD;  /* Anthropic的浅悬停色 */
+    --color-active: #DCDAD3;  /* Anthropic的浅激活色 */
+
+    /* 边框 */
+    --color-border: rgba(25, 25, 25, 0.15);  /* Anthropic风格边框 */
+    --color-border-soft: rgba(25, 25, 25, 0.08);  /* Anthropic风格浅边框 */
+
+    --color-white: #F5F5F2;  /* 略微偏暖的白色 */
+    
+    /* 功能性颜色 */
+    --color-icon: var(--color-black-soft);
+    --color-icon-white: #91918d;  /* Anthropic的云灰色调 */
+    --color-error: var(--error);
+    --color-link: var(--link);
+    --color-code-background: #E6E4DD;  /* 代码背景色 */
+    --color-code-text: #191919;    /* 代码文本颜色 */
+    --color-frame-border: #91918d;
+    --color-group-background: var(--anthropic-bg-soft);
+    --color-reference: #91918d;
+    --color-reference-text: #191919;
+    --color-reference-background: var(--anthropic-bg);
+    
+    /* 亮色模式下的输入框样式 */
+    --input-background: var(--anthropic-bg);
+    --input-container-background: var(--white);
+    --input-shadow: rgba(0, 0, 0, 0.05);
+}
+
+/* 全局样式 */
+* {
+    font-variant-ligatures: normal;
+}
+
+/* 内容容器样式 */
+#content-container {
+    font-family: var(--sans-serif);
+    background-color: var(--color-background) !important;
+}
+
+/* Markdown内容样式 */
+.markdown {
+    font-family: var(--serif);
+
+    p {
+        line-height: 1.65em;
+        font-weight: 400;
+    }
+
+    /* H1和H2标题居中 */
+    h1, h2 {
+        text-align: center;
+        font-family: var(--sans-serif);
+        font-weight: 500;
+        padding: 0.5rem 0;
+    }
+
+    /* 其他标题保持原样 */
+    h3, h4 {
+        font-family: var(--sans-serif);
+        font-weight: 500;
+        padding: 0.5rem 0;
+    }
+
+    blockquote, th {
+        font-family: var(--sans-serif);
+    }
+
+    a {
+        text-underline-offset: 0.1em;
+        text-decoration-color: var(--color-primary-soft);
+        text-decoration-thickness: 0.1em;
+        text-decoration-style: dashed;
+    }
+    
+    a:hover {
+        text-decoration-style: solid;
+    }
+    
+    table, th, td, blockquote {
+        font-size: small;
+        font-family: var(--sans-serif);
+    }
+}
+
+/* 代码块样式 */
+code, pre {
+    font-family: var(--monospace) !important;
+    font-size: 1em !important;
+}
+
+/* 修复内联代码样式 */
+:not(pre) > code {
+    background-color: var(--color-code-background) !important;
+    color: var(--color-code-text) !important;
+    padding: 0.2em 0.4em !important;
+    border-radius: 3px !important;
+    white-space: nowrap !important;
+    font-weight: 500 !important;
+    margin: 0 0.2em !important;
+}
+
+/* 输入栏样式 */
+.inputbar-container {
+    background-color: var(--input-container-background) !important;
+}
+
+/* 文本选择样式 */
+::selection {
+    background-color: var(--color-primary-soft);
+    color: var(--color-text);
+}
+
+/* 气泡消息样式 */
+.bubble .message-content-container {
+    border-radius: 1rem;
+    border: 0.7pt solid var(--color-border-soft);
+}
+
+/* 输入框样式 */
+.inputbar {
+    background-color: var(--color-background) !important;
+    textarea {
+        font-size: 1rem;
+        font-family: var(--sans-serif);
+    }
+    .inputbar-container {
+        background-color: var(--input-container-background) !important;
+        filter: drop-shadow(0 0 1.25rem var(--input-shadow));
+        transition: all 0.3s ease-in-out;
+    }
+    .inputbar-container.focus {
+        filter: drop-shadow(0 0 1.25rem var(--input-shadow));
+    }
+}
+
+/* 修复用户消息操作按钮悬停背景色 */
+.bubble .message-user .message-action-button:hover {
+    background-color: var(--color-background-mute);
+}
+
+/* 按钮样式 */
+.ant-btn, .ant-input-outlined {
+    &:focus {
+        box-shadow: 0 0 0 2pt var(--focus);
+        border-color: var(--color-border-mute) !important;
+    }
+    &:hover {
+        border-color: var(--color-border-soft) !important;
+    }
+}
+
+/* 脚注样式 */
+.footnotes {
+    background-color: var(--color-background-soft);
+}
+
+/* Ant Design组件样式定制 */
+.ant-dropdown-menu {
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--color-border);
+}
+
+.ant-segmented-group * {
+    border-radius: 0.5rem !important;
+}
+
+.ant-dropdown-trigger {
+    --color-border: transparent !important;
+    transition: all 0.3s ease-in-out !important;
+}
+
+* {
+    --ant-color-primary-hover: var(--color-primary) !important;
+    --ant-color-primary: var(--color-primary) !important;
+}
