@@ -1,0 +1,570 @@
+@import url("//cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css");
+:root {
+  --duration-quick: 0.15s;
+  --duration-normal: 0.3s;
+  --duration-long: 0.5s;
+  --easing-emphasized: cubic-bezier(0.2, 0, 0, 1);
+  --easing-decelerate: cubic-bezier(0, 0, 0.2, 1);
+  --easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --easing-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --radius-dynamic: 12px;
+  --radius-large: 12px;
+
+  --color-brand-primary: oklch(65% 0.05 250);
+  --color-brand-hover: color-mix(
+    in oklch,
+    var(--color-brand-primary) 90%,
+    black
+  );
+  --theme-lightness: 1;
+  --shadow-intensity: 0.1;
+  --highlight-intensity: 0.05;
+  --file-line-width: 65rem;
+  --font-default: "LXGW WenKai Screen", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  --background-blur: 12px;
+  --hover-scale: 1.01;
+  --active-scale: 0.98;
+  --card-translate-y: 6px;
+  --chat-text-user: var(--color-text-1);
+  --metal-gradient-light: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.07) 0%,
+    rgba(255, 255, 255, 0.15) 25%,
+    rgba(255, 255, 255, 0.07) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    rgba(255, 255, 255, 0.07) 100%
+  );
+  --metal-gradient-dark: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.03) 0%,
+    rgba(255, 255, 255, 0.08) 25%,
+    rgba(255, 255, 255, 0.03) 50%,
+    rgba(255, 255, 255, 0.08) 75%,
+    rgba(255, 255, 255, 0.03) 100%
+  );
+  --border-glow: 0 0 5px rgba(255, 255, 255, 0.2);
+}
+/* 深色模式 */
+body[theme-mode="dark"] {
+  --background-image-url: url("http://cdn-hsyq-static.shanhutech.cn/bizhi/staticwp/202502/e3e6c47f47dbefbf46d9e4c9d7bf85ba--2362583089.jpg");
+  --background-overlay-opacity: 0.5;
+  --color-background: linear-gradient(
+    145deg,
+    rgba(28, 28, 30, 0.6) 0%,
+    rgba(44, 44, 46, 0.6) 100%
+  );
+  --color-background-soft: linear-gradient(
+    145deg,
+    rgba(44, 44, 46, 0.5) 0%,
+    rgba(58, 58, 60, 0.5) 100%
+  );
+  --color-background-mute: linear-gradient(
+    145deg,
+    rgba(72, 72, 74, 0.4) 0%,
+    rgba(99, 99, 102, 0.4) 100%
+  );
+  --navbar-background: linear-gradient(
+    to right,
+    rgba(28, 28, 30, 0.6) 0%,
+    rgba(44, 44, 46, 0.6) 100%
+  );
+  --chat-background: linear-gradient(
+    to bottom,
+    rgba(44, 44, 46, 0.5) 0%,
+    rgba(58, 58, 60, 0.5) 100%
+  );
+  --chat-background-user: linear-gradient(
+    to right,
+    rgba(30, 144, 255, 0.4) 0%,
+    rgba(65, 172, 255, 0.4) 100%
+  );
+  --user-text-color-dark: rgba(255, 255, 255, 0.95);
+  --chat-background-assistant: linear-gradient(
+    to right,
+    rgba(72, 72, 74, 0.4) 0%,
+    rgba(85, 85, 87, 0.4) 100%
+  );
+  --ctp-text: rgba(255, 255, 255, 0.85);
+  --shadow-color: rgba(0, 0, 0, 0.25);
+  --highlight-color: rgba(255, 255, 255, 0.08);
+  --deep-thinking-color: rgba(180, 180, 200, 0.9);
+  --code-bg-dark: rgba(30, 30, 32, 0.7);
+  --footnote-bg-dark: rgba(44, 44, 46, 0.4);
+  --theme-lightness: -1;
+  --shadow-intensity: 0.25;
+  --border-color: rgba(255, 255, 255, 0.05);
+  --border-hover-color: rgba(255, 255, 255, 0.1);
+  --metal-gradient: var(--metal-gradient-dark);
+  --xy-controls-button-color-default: var(--code-bg-dark);
+  --xy-controls-button-color-hover-default: rgb(0, 0, 0);
+  --ant-modal-body-background: rgba(30, 30, 30, 0.85);
+}
+/* 浅色模式 */
+body[theme-mode="light"] {
+  --background-image-url: url("https://s.panlai.com/upload/bizhihui_com_20231111000146169963210679720.jpg-arthumbs");
+  --background-overlay-opacity: 0.25;
+  --color-background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(250, 250, 255, 0.3) 100%
+  );
+  --color-background-soft: linear-gradient(
+    145deg,
+    rgba(245, 245, 250, 0.25) 0%,
+    rgba(240, 240, 245, 0.25) 100%
+  );
+  --color-background-mute: linear-gradient(
+    145deg,
+    rgba(235, 235, 240, 0.2) 0%,
+    rgba(230, 230, 235, 0.2) 100%
+  );
+  --navbar-background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(250, 250, 255, 0.4) 100%
+  );
+  --chat-background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(250, 250, 255, 0.3) 100%
+  );
+  --chat-background-user: linear-gradient(
+    to right,
+    rgba(135, 206, 250, 0.5) 0%,
+    rgba(165, 215, 255, 0.5) 100%
+  );
+  --chat-background-assistant: linear-gradient(
+    to right,
+    rgba(240, 240, 245, 0.4) 0%,
+    rgba(235, 235, 240, 0.4) 100%
+  );
+  --color-white: rgba(255, 255, 255, 0.9);
+  --ctp-text: rgba(30, 30, 30, 0.9);
+  --shadow-color: rgba(0, 0, 0, 0.06);
+  --highlight-color: rgba(255, 255, 255, 0.3);
+  --deep-thinking-color: rgba(80, 80, 100, 0.9);
+  --code-bg-light: rgba(240, 240, 245, 0.4);
+  --footnote-bg-light: rgba(245, 245, 250, 0.3);
+  --theme-lightness: 1;
+  --border-color: rgba(255, 255, 255, 0.15);
+  --border-hover-color: rgba(255, 255, 255, 0.25);
+  --metal-gradient: var(--metal-gradient-light);
+  --ant-modal-body-background: rgba(255, 255, 255, 0.9);
+}
+*:not(.katex):not(.katex *):not(.iconfont):not(.markdown code):not(.markdown pre) {
+  font-family: var(--font-default);
+  letter-spacing: 0.1em;
+}
+body {
+  position: relative;
+  background-image: var(--background-image-url);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-background);
+  opacity: var(--background-overlay-opacity);
+  -webkit-backdrop-filter: blur(var(--background-blur));
+  backdrop-filter: blur(var(--background-blur));
+  z-index: -1;
+}
+.message-content-container {
+  will-change: transform;
+  contain: layout paint style;
+  background:color-mix(
+    in srgb,
+    var(--color-background-soft),
+    transparent 10%
+  ) !important;
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  border: none;
+  border-radius: var(--radius-dynamic);
+  position: relative;
+  z-index: 1;
+  outline: none;
+  transition: background-color var(--duration-normal) var(--easing-standard),
+    box-shadow var(--duration-normal) var(--easing-standard);
+  margin-block: 8px;
+  padding-inline: 12px;
+  padding-block: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding:14px !important;
+}
+.message-content-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: var(--radius-dynamic);
+  background: var(--metal-gradient);
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: -1;
+  border: 0.3px solid var(--border-color);
+  transition: opacity var(--duration-normal) var(--easing-standard);
+}
+.message-content-container:hover::before {
+  opacity: 0.7;
+  border-color: var(--border-hover-color);
+}
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+    transform: translateY(var(--card-translate-y));
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.chat-item {
+  animation: cardAppear var(--duration-normal) var(--easing-decelerate) forwards;
+}
+#inputbar {
+  background: color-mix(
+    in srgb,
+    var(--color-background),
+    transparent 20%
+  ) !important;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: none;
+  position: relative;
+  border-radius: var(--radius-large);
+  margin: -8px 18px 15px 18px;
+  transition: box-shadow var(--duration-normal) var(--easing-standard);
+  outline: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+#inputbar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: var(--radius-large);
+  background: var(--metal-gradient);
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: -1;
+  border: 0.3px solid var(--border-color);
+}
+#inputbar:focus-within::before {
+  opacity: 0.8;
+  border-color: var(--color-brand-primary);
+  box-shadow: var(--border-glow);
+}
+.navbar {
+  background: color-mix(
+    in srgb,
+    var(--navbar-background),
+    transparent 20%
+  ) !important;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: none;
+  position: relative;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+  animation: navbarAppear var(--duration-long) var(--easing-standard) forwards;
+}
+.navbar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0.3px;
+  background: var(--metal-gradient);
+  opacity: 0.5;
+}
+@keyframes navbarAppear {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.chat-container {
+  background: transparent !important;
+}
+.chat-item.user .message-content-container {
+  background: color-mix(
+    in srgb,
+    rgba(135, 206, 250, 0.4),
+    transparent 20%
+  ) !important;
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border-left: 3px solid rgba(30, 144, 255, 0.6);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+.chat-item.assistant .message-content-container {
+  background: color-mix(
+    in srgb,
+    rgba(255, 182, 193, 0.4),
+    transparent 20%
+  ) !important;
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border-left: 3px solid rgba(255, 182, 193, 0.6);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+    padding:14px !important;
+}
+
+@media (prefers-contrast: more) {
+  .message-content-container::before {
+    opacity: 0.8;
+    border-width: 1px;
+  }
+  #inputbar::before {
+    opacity: 0.8;
+    border-width: 1px;
+  }
+}
+body[theme-mode="dark"] .chat-item.user .nickname,
+body[theme-mode="dark"] .chat-item.user .message {
+  color: var(--user-text-color-dark);
+}
+.chat-item .nickname,
+.chat-item .message {
+  color: var(--ctp-text);
+}
+.ant-collapse-content-box .markdown {
+  color: var(--deep-thinking-color);
+  background: color-mix(
+    in srgb,
+    var(--color-background-soft),
+    transparent 30%
+  ) !important;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-top: 8px;
+  border-left: 2px solid rgba(180, 180, 200, 0.3);
+}
+body[theme-mode="dark"] .ant-collapse-content-box .markdown {
+  background: color-mix(
+    in srgb,
+    var(--color-background-soft),
+    transparent 50%
+  ) !important;
+  border-left: 2px solid rgba(180, 180, 200, 0.2);
+}
+/* 浅色模式代码背景 - Mac OS风格 */
+.shiki.one-light {
+  background-color: transparent !important;
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow var(--duration-normal) var(--easing-standard);
+}
+.shiki.one-light::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 6px;
+  background: var(--metal-gradient);
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: -1;
+  border: 0.3px solid rgba(0, 0, 0, 0.05);
+}
+/* 深色模式代码背景 - Mac OS风格 */
+.shiki.material-theme-darker {
+  background-color: transparent !important;
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow var(--duration-normal) var(--easing-standard);
+}
+.shiki.material-theme-darker::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 6px;
+  background: var(--metal-gradient);
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: -1;
+  border: 0.3px solid rgba(255, 255, 255, 0.05);
+}
+/* 代码块悬停效果 - 光泽变化 */
+pre:hover .shiki::before {
+  opacity: 0.5;
+}
+/* 引用来源背景透明 - Mac OS风格 */
+.footnotes {
+  background-color: var(--footnote-bg-light);
+  border-radius: 8px;
+  position: relative;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  transition: box-shadow var(--duration-normal) var(--easing-standard);
+}
+.footnotes::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 8px;
+  background: var(--metal-gradient);
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: -1;
+  border: 0.3px solid rgba(0, 0, 0, 0.05);
+}
+body[theme-mode="dark"] .footnotes {
+  background-color: var(--footnote-bg-dark);
+}
+body[theme-mode="dark"] .footnotes::before {
+  border-color: rgba(255, 255, 255, 0.05);
+  opacity: 0.2;
+}
+/* 保留原有样式 - 输入框高度 */
+#inputbar textarea.ant-input {
+  height: 110px !important;
+  padding: 10px;
+}
+/* 按钮 - Mac OS风格（移除动效） */
+button,
+.ant-btn {
+  border-radius: 6px;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  transition: background-color var(--duration-quick) var(--easing-standard);
+  position: relative;
+  overflow: hidden;
+}
+/* 按钮金属质感 */
+button::before,
+.ant-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--metal-gradient);
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: -1;
+}
+button:hover::before,
+.ant-btn:hover::before {
+  opacity: 0.4;
+}
+/* 滚动条 - Mac OS风格 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  transition: background var(--duration-quick) var(--easing-standard);
+  background-image: var(--metal-gradient-light);
+  background-size: 100px 100%;
+}
+body[theme-mode="dark"] ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  background-image: var(--metal-gradient-dark);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+body[theme-mode="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+/* 加载时的页面过渡效果 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+body {
+  animation: fadeIn 0.8s var(--easing-decelerate) forwards;
+}
+/* 卡片的内容渐入动画 */
+.message-content-container .markdown {
+  opacity: 0;
+  animation: fadeIn 0.4s var(--easing-decelerate) 0.1s forwards;
+}
+/* 链接颜色 - Mac OS风格 */
+a {
+  color: var(--color-brand-primary);
+  transition: color var(--duration-quick) var(--easing-standard);
+}
+a:hover {
+  color: var(--color-brand-hover);
+}
+/* 选中文本背景色 - Mac OS风格 */
+::selection {
+  background-color: color-mix(
+    in srgb,
+    var(--color-brand-primary),
+    transparent 70%
+  );
+}
+/* 夜间/日间模式切换按钮（移除动效） */
+.theme-toggle-button {
+  transition: opacity var(--duration-normal) var(--easing-emphasized);
+}
+.theme-toggle-button:hover {
+  opacity: 0.8;
+}
+.ant-modal-body {
+  background: var(--ant-modal-body-background);
+}
+body[theme-mode="light"] .ant-tooltip {
+  --antd-arrow-background-color: rgb(255 255 255 / 95%) !important;
+}
+body[theme-mode="light"] .ant-tooltip .ant-tooltip-content .ant-tooltip-inner {
+  color: #000 !important;
+  background-color: rgb(255 255 255 / 95%) !important;
+}
+pre div[class^="CodeContent"] {
+  border-radius: 6px !important;
+}
+body[theme-mode="light"] pre div[class^="CodeContent"] {
+  background-color: var(--code-bg-light) !important;
+}
+body[theme-mode="dark"] pre div[class^="CodeContent"] {
+  background-color: var(--code-bg-dark) !important;
+}
